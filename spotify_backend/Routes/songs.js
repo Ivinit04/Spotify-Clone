@@ -10,7 +10,8 @@ router.post(
   passport.authenticate("jwt", { session: false }),
   async (req, res) => {
     const { name, thumbnail, track } = req.body;
-    console.log(artist);
+    const artist = req.user._id;
+    
 
     if (!name || !thumbnail || !track) {
       return res.status(301).json({ error: "Insufficient song details" });
